@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-     <head>
-          <meta charset="UTF-8" />
-          <meta
-               name="viewport"
-               content="width=device-width, initial-scale=1.0"
-          />
-          <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-          <title>Articles</title>
-     </head>
-     <body>
-          <h2>Article List</h2>
-     </body>
-</html>
+{% extends "base_layout.html" %} {%block content%}
+<h1>Articles List</h1>
+<div class="articles">
+     {% for data in articles %}
+     <div class="article">
+          <a href="{% url 'article:detail' slug=data.slug%}">{{data.title}}</a>
+          <p>{{data.snippet}}</p>
+          <p>{{data.created_at}}</p>
+          <p class="author">added by {{ article.author.username }}</p>
+     </div>
+     {% endfor %}
+</div>
+{% endblock %}
